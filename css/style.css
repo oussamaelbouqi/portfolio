@@ -594,7 +594,7 @@ header .links .logo,
 
 #typed-text {
     display: inline-block;
-    min-width: 170px; /* عدل الرقم حسب أطول كلمة عندك */
+    min-width: 170px; 
     min-height: 1em;
     vertical-align: bottom;
 }
