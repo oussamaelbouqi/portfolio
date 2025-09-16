@@ -48,7 +48,7 @@ function sendContact() {
 }
 
 document.addEventListener("DOMContentLoaded", function() {
-    const words = ["Web Developer", "Programmer"];
+    const words = ["Développeur ", "programmeur"];
     let i = 0;
     let j = 0;
     let currentWord = "";
