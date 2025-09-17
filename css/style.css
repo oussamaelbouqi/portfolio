@@ -611,8 +611,12 @@ header .links .logo,
         margin-bottom: 40px;
     }
     .about .div_img {
-        width: 80%;
+        width: 90%;
         margin: 0 auto;
+    }
+    .about .div_img img {
+        border-radius: 10px;
+        box-shadow: 0 10px 25px rgba(0, 238, 255, 0.2);
     }
     
     /* Services Section Responsive */

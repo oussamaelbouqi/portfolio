@@ -28,23 +28,46 @@ function Open_colose_Menu() {
     nav_links.classList.toggle("active");
 }
 
-// Typing effect for the main heading
+// Typing effect for the main heading with alternating words
 document.addEventListener('DOMContentLoaded', function() {
     const typedTextElement = document.getElementById('typed-text');
     if (typedTextElement) {
-        const text = typedTextElement.textContent;
+        const words = ["Développeur web", "programmeur"];
+        let currentWordIndex = 0;
         typedTextElement.textContent = '';
         
-        let i = 0;
-        function typeWriter() {
-            if (i < text.length) {
-                typedTextElement.textContent += text.charAt(i);
-                i++;
-                setTimeout(typeWriter, 100);
-            }
+        function typeWord(word) {
+            let i = 0;
+            const typeInterval = setInterval(function() {
+                if (i < word.length) {
+                    typedTextElement.textContent += word.charAt(i);
+                    i++;
+                } else {
+                    clearInterval(typeInterval);
+                    setTimeout(eraseWord, 2000); // Wait before erasing
+                }
+            }, 100);
         }
         
-        setTimeout(typeWriter, 1000);
+        function eraseWord() {
+            let text = typedTextElement.textContent;
+            const eraseInterval = setInterval(function() {
+                if (text.length > 0) {
+                    text = text.substring(0, text.length - 1);
+                    typedTextElement.textContent = text;
+                } else {
+                    clearInterval(eraseInterval);
+                    currentWordIndex = (currentWordIndex + 1) % words.length;
+                    setTimeout(function() {
+                        typeWord(words[currentWordIndex]);
+                    }, 500); // Wait before typing next word
+                }
+            }, 50);
+        }
+        
+        setTimeout(function() {
+            typeWord(words[currentWordIndex]);
+        }, 1000);
     }
 });
 function sendContact() {
