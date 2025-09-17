@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <title>Portfolio | Oussama</title>
 
     <link rel="icon" href="img/logo_icon.png">
@@ -12,6 +12,7 @@
      <link rel="stylesheet" href="css/style.css">
 
      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+     
 </head>
 <body>
 
@@ -30,7 +31,7 @@
 
     <header>
         <nav class="container">
-            <a href="#" class="logo"><img src="img/logo.png" alt=""></a>
+            <a href="#" class="logo"><img src="img/logo.png" alt="Logo" width="200" height="50"></a>
 
             <div class="links" id="links">
                 <span class="close_menu"  onclick="Open_colose_Menu()"><i class="fa-solid fa-xmark"></i></span>
@@ -69,7 +70,7 @@
             </div>
 
             <div class="div_img">
-                <img class="person" src="img/home.png" alt="">
+                <img class="person" src="img/home.png" alt="" loading="lazy">
                 <!-- <img class="bg_img" src="img/bg_img_home.png" alt=""> -->
 
             </div>
@@ -100,7 +101,7 @@
             </div>
 
             <div class="div_img">
-                <img src="img/about.jpg" alt="">
+                <img src="img/about.jpg" alt="" loading="lazy">
             </div>
         </div>
     </section>
@@ -121,7 +122,7 @@
                     <h3>Développement Web</h3>
                     <p>Je conçois et développe des sites web modernes et responsives en utilisant HTML, CSS, JavaScript et ASP.NET.
 Je veille à créer des interfaces élégantes et des expériences utilisateur fluides, avec une intégration sécurisée aux bases de données SQL Server, afin d’offrir des sites rapides et fiables adaptés à tous les appareils.</p>
-                        <a href="# " class="btn">Read More</a>
+                        <a href="# " class="btn">En savoir plus</a>
 
                 </div>
 
@@ -130,8 +131,7 @@ Je veille à créer des interfaces élégantes et des expériences utilisateur f
                     <h3>Applications de bureau & Solutions personnalisées</h3>
                     <p>Je développe des applications de bureau et des solutions logicielles sur mesure avec C# et les technologies .NET.
 J’accompagne les entreprises dans l’automatisation de leurs processus et l’optimisation de leur productivité grâce à des outils performants et faciles à utiliser.</p>
-                        <a href="# " class="btn">Read More</a>
-                </div>
+<a href="#" class="btn">En savoir plus</a>                </div>
 
 
                 <div class="box">
@@ -139,8 +139,7 @@ J’accompagne les entreprises dans l’automatisation de leurs processus et l�
                     <h3>Design, Photographie & Réseaux sociaux</h3>
                     <p>Je propose des services de création d’identité visuelle, de photographie professionnelle pour événements et produits, ainsi que la gestion de contenus sur les réseaux sociaux.
 Des photos et vidéos aux publications créatives, j’aide les marques et initiatives à renforcer leur présence digitale et à capter l’attention de leur audience.</p>
-                        <a href="# " class="btn">Read More</a>
-                </div>
+<a href="#" class="btn">En savoir plus</a>                </div>
             </div>
         </div>
     </section>
@@ -225,13 +224,13 @@ Retouche et publication sur les réseaux sociaux.</p>
 
     <section class="contact" id="contact">
         <div class="top_section">
-            <h2>Contact   <span>Me</span></h2>
+            <h2>Contactez-<span>Moi</span></h2>
         </div>
 
         <div class="container">
 
               <div class="soial_contact"  >
-                <h2>Follow Me</h2>
+                <h2>Suivez-moi</h2>
                 <div class="links">
                     <a href="https://mail.google.com/mail/?view=cm&to=elbouqi.oussama@gmail.com" target="_blank">
                     <i class="fa-solid fa-envelope"></i> Elbouqi.oussama@mail.com  <a href="tel:+212711-726768"><i class="fa-solid fa-phone"></i> +212711-726768</a>
@@ -242,15 +241,15 @@ Retouche et publication sur les réseaux sociaux.</p>
             </div>
             <form action="">
                 <div class="inpts_form">
-                    <input type="text" placeholder="Full Name">
+                    <input type="text" placeholder="Nom Complet">
                     <input type="text" placeholder="Email">
-                    <input type="text" placeholder="Mobile Number">
-                    <input type="text" placeholder="Subject">
+                    <input type="text" placeholder="Numéro de téléphone">
+                    <input type="text" placeholder="Sujet">
 
-                    <textarea name="" id="" rows="10" placeholder="Your Message Here ..."></textarea>
+                    <textarea name="" id="" rows="10" placeholder="Votre message ici ..."></textarea>
                 </div>
 
-<button class="btn" type="button" onclick="sendContact()">Send Message</button>            </form>
+<button class="btn" type="button" onclick="sendContact()">Envoyer le message</button>            </form>
 
         </div>
     </section>

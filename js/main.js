@@ -1,82 +1,171 @@
 // add class active to header on scroll
+let header = document.querySelector("header");
 
-let header = document.querySelector("header")
+// Optimized scroll event with requestAnimationFrame
+let lastScrollY = 0;
+let ticking = false;
 
-window.onscroll = function(){
-    if (this.scrollY >= 50) {
-        header.classList.add("active")
-    }else{
-        header.classList.remove("active")
+window.addEventListener('scroll', function() {
+    lastScrollY = window.scrollY;
+    
+    if (!ticking) {
+        window.requestAnimationFrame(function() {
+            if (lastScrollY >= 50) {
+                header.classList.add("active");
+            } else {
+                header.classList.remove("active");
+            }
+            ticking = false;
+        });
+        
+        ticking = true;
     }
-}
+});
 
 let nav_links = document.getElementById("links");
 
 function Open_colose_Menu() {
-    nav_links.classList.toggle("active")
-}
-function sendContact() {
-    // اجلب القيم من الحقول
-    var name = document.querySelector('input[placeholder="Full Name"]').value;
-    var email = document.querySelector('input[placeholder="Email"]').value;
-    var phone = document.querySelector('input[placeholder="Mobile Number"]').value;
-    var subject = document.querySelector('input[placeholder="Subject"]').value;
-    var message = document.querySelector('textarea[placeholder="Your Message Here ..."]').value;
-
-    // نص الرسالة
-    var fullMessage = 
-        "Name: " + name + "%0A" +
-        "Email: " + email + "%0A" +
-        "Phone: " + phone + "%0A" +
-        "Subject: " + subject + "%0A" +
-        "Message: " + message;
-
-    ///// رابط واتساب (ضع رقمك بدل 212711726768)
-    var whatsappUrl = "https://wa.me/212711726768?text=" + encodeURIComponent(fullMessage) + "?subject=" + encodeURIComponent(subject)
-        + "&body=" + encodeURIComponent(fullMessage.replace(/%0A/g, "\n"));;
-
-    // رابط mailto
-    var mailtoUrl = "mailto:elbouqi.oussama@gmail.com"
-        + "?subject=" + encodeURIComponent(subject)
-        + "&body=" + encodeURIComponent(fullMessage.replace(/%0A/g, "\n"));
-
-    // افتح واتساب في نافذة جديدة
-    window.open(whatsappUrl, '_blank');
-
-    // افتح البريد في نافذة جديدة
-    window.open(mailtoUrl, '_blank');
+    nav_links.classList.toggle("active");
 }
 
-document.addEventListener("DOMContentLoaded", function() {
-    const words = ["Développeur web", "programmeur"];
-    let i = 0;
-    let j = 0;
-    let currentWord = "";
-    let isDeleting = false;
-    const speed = 120;
-    const eraseSpeed = 60;
-    const delay = 1200;
-    const typedText = document.getElementById("typed-text");
-
-    function type() {
-        currentWord = words[i];
-        if (!isDeleting) {
-            typedText.textContent = currentWord.substring(0, j + 1);
-            j++;
-            if (j === currentWord.length) {
-                isDeleting = true;
-                setTimeout(type, delay);
-                return;
-            }
-        } else {
-            typedText.textContent = currentWord.substring(0, j - 1);
-            j--;
-            if (j === 0) {
-                isDeleting = false;
-                i = (i + 1) % words.length;
+// Typing effect for the main heading
+document.addEventListener('DOMContentLoaded', function() {
+    const typedTextElement = document.getElementById('typed-text');
+    if (typedTextElement) {
+        const text = typedTextElement.textContent;
+        typedTextElement.textContent = '';
+        
+        let i = 0;
+        function typeWriter() {
+            if (i < text.length) {
+                typedTextElement.textContent += text.charAt(i);
+                i++;
+                setTimeout(typeWriter, 100);
             }
         }
-        setTimeout(type, isDeleting ? eraseSpeed : speed);
+        
+        setTimeout(typeWriter, 1000);
     }
-    if(typedText) type();
 });
+function sendContact() {
+    // جلب القيم
+    var name = document.getElementById('nameInput').value.trim();
+    var email = document.getElementById('emailInput').value.trim();
+    var phone = document.getElementById('phoneInput').value.trim();
+    var subject = document.getElementById('subjectInput').value.trim();
+    var message = document.getElementById('messageInput').value.trim();
+
+    // جلب سبانات الأخطاء
+    var nameError = document.getElementById('nameError');
+    var emailError = document.getElementById('emailError');
+    var phoneError = document.getElementById('phoneError');
+    var subjectError = document.getElementById('subjectError');
+    var messageError = document.getElementById('messageError');
+
+    // إعادة تعيين الأخطاء
+    nameError.textContent = "";
+    emailError.textContent = "";
+    phoneError.textContent = "";
+    subjectError.textContent = "";
+    messageError.textContent = "";
+
+    let valid = true;
+
+    if (!name) {
+        nameError.textContent = "Veuillez saisir votre nom complet.";
+        valid = false;
+    }
+    var emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    if (!email) {
+        emailError.textContent = "Veuillez saisir votre adresse e-mail.";
+        valid = false;
+    } else if (!emailPattern.test(email)) {
+        emailError.textContent = "Adresse e-mail invalide.";
+        valid = false;
+    }
+    var phonePattern = /^\+?\d+$/;
+    if (!phone) {
+        phoneError.textContent = "Veuillez saisir votre numéro de téléphone.";
+        valid = false;
+    } else if (!phonePattern.test(phone)) {
+        phoneError.textContent = "Numéro invalide (chiffres et + seulement)";
+        valid = false;
+    }
+    if (!subject) {
+        subjectError.textContent = "Veuillez saisir le sujet.";
+        valid = false;
+    }
+    if (!message) {
+        messageError.textContent = "Veuillez écrire votre message.";
+        valid = false;
+    }
+
+    if (!valid) return;
+
+    // إعداد الرسالة
+    var body =
+        "Bonjour,%0A%0A" +
+        "Vous avez reçu un nouveau message depuis le portfolio :%0A%0A" +
+        "Nom : " + name + "%0A" +
+        "Email : " + email + "%0A" +
+        "Téléphone : " + phone + "%0A" +
+        "Sujet : " + subject + "%0A%0A" +
+        "Message :%0A" + message + "%0A%0A" +
+        "Cordialement,%0ALe site portfolio";
+
+    var gmailUrl = "https://mail.google.com/mail/?view=cm&to=elbouqi.oussama@gmail.com"
+        + "&su=" + encodeURIComponent(subject)
+        + "&body=" + body;
+
+    var whatsappMessage =
+        "Nom : " + name + "\n" +
+        "Email : " + email + "\n" +
+        "Téléphone : " + phone + "\n" +
+        "Sujet : " + subject + "\n" +
+        "Message : " + message;
+    var whatsappUrl = "https://wa.me/212711726768?text=" + encodeURIComponent(whatsappMessage);
+
+    // عرض النافذة المنبثقة للاختيار
+    var modal = document.getElementById('sendModal');
+    modal.style.display = 'flex';
+
+    document.getElementById('sendGmail').onclick = function() {
+        window.open(gmailUrl, '_blank');
+        modal.style.display = 'none';
+    };
+    document.getElementById('sendWhatsapp').onclick = function() {
+        window.open(whatsappUrl, '_blank');
+        modal.style.display = 'none';
+    };
+}
+
+// لإرجاع placeholder الأصلي عند الكتابة
+document.addEventListener("DOMContentLoaded", function() {
+    var fields = [
+        {el: document.querySelector('input[placeholder="Nom Complet"]'), ph: "Nom Complet"},
+        {el: document.querySelector('input[placeholder="Email"]'), ph: "Email"},
+        {el: document.querySelector('input[placeholder="Numéro de téléphone"]'), ph: "Numéro de téléphone"},
+        {el: document.querySelector('input[placeholder="Sujet"]'), ph: "Sujet"},
+        {el: document.querySelector('textarea[placeholder="Votre message ici ..."]'), ph: "Votre message ici ..."}
+    ];
+    fields.forEach(function(field) {
+        if (field.el) {
+            field.el.addEventListener("input", function() {
+                field.el.placeholder = field.ph;
+            });
+        }
+    });
+    var phoneInput = document.querySelector('input[placeholder="Numéro de téléphone"]');
+    if (phoneInput) {
+        phoneInput.addEventListener("input", function(e) {
+            // يسمح فقط بالأرقام و+ في البداية
+            let value = phoneInput.value;
+            value = value.replace(/[^0-9+]/g, '');
+            // لا يسمح بأكثر من + واحدة وفي البداية فقط
+            value = value.replace(/(?!^)\+/g, '');
+            if (value.indexOf('+') > 0) value = value.replace(/\+/g, '');
+            phoneInput.value = value;
+        });
+    }
+});
+
