@@ -147,5 +147,19 @@ Un projet complet allant de la conception UML au déploiement.</p>
     </section>
 
     <script src="js/main.js"></script>
+    <script>
+document.addEventListener('contextmenu', event => event.preventDefault());
+</script>
+<script>
+document.addEventListener('contextmenu', e => e.preventDefault());
+</script>
+<script>
+document.onkeydown = function(e) {
+    if(e.keyCode == 123 || (e.ctrlKey && e.shiftKey && (e.keyCode==73 || e.keyCode==J))) {
+        return false; // F12 أو Ctrl+Shift+I / Ctrl+Shift+J
+    }
+}
+</script>
+
 </body>
 </html>

@@ -20,7 +20,12 @@
 
 body{
     background: #131313;
+     user-select: none;
+  -webkit-user-select: none;
+  -moz-user-select: none;
 }
+
+
 
 .container{
     width: 80%;
