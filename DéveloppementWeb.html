@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Développement Web | Oussama</title>
+    <link rel="icon" href="img/logo_icon.png">
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+</head>
+<body>
+    <div class="bg-lines">
+        <span></span><span></span><span></span><span></span>
+        <span></span><span></span><span></span><span></span><span></span>
+    </div>
+
+    <header>
+        <nav class="container">
+            <a href="index.html" class="logo"><img src="img/logo.png" alt=""></a>
+            <div class="links" id="links">
+                <span class="close_menu" onclick="Open_colose_Menu()"><i class="fa-solid fa-xmark"></i></span>
+                <a href="index.html" class="active">Accueil</a>
+                <a href="index.html#about">À propos</a>
+                <a href="index.html#services">Services</a>
+                <a href="index.html#contact">Contact</a>
+            </div>
+            <div class="icons">
+                <a href="https://www.facebook.com/elboukioussama36"><i class="fa-brands fa-facebook-f"></i></a>
+                <a href="https://www.linkedin.com/in/oussama-elbouqi-4b578120a/"><i class="fa-brands fa-linkedin"></i></a>
+                <a href="https://github.com/oussamaelbouqi"><i class="fa-brands fa-github"></i></a>
+                <a href="https://www.instagram.com/oussama.elbouqi/"><i class="fa-brands fa-instagram"></i></a>
+                <span class="icon_menu" onclick="Open_colose_Menu()"><i class="fa-solid fa-bars"></i></span>
+            </div>
+        </nav>
+    </header>
+
+    <section class="projects" id="projects">
+        <div class="container">
+            <div class="top_section">   
+                <br>    <br>
+                <h2><a href="index.html" class="breadcrumb-home">Accueil</a> <span>|</span> Développement <span>Web</span></h2>
+            </div>
+
+            <!-- Projet de fin d'études -->
+            <div class="project_box">
+                <img src="img/project_tecboy1.jpg" alt="Projet de fin d'études">
+                <div class="text">
+                    <h4><span>Développement Web</span></h4>
+                    <h3><a href="#">Tech Boy – Site E-commerce</a></h3>
+                    <p>Création d’un site de vente en ligne dans le cadre du projet de fin d’études.
+Technologies : ASP.NET, CSS, HTML, JavaScript, SQL Server.
+Un projet complet allant de la conception UML au déploiement.</p>
+                    <a href="img/TECBOY PC.pdf" target="_blank" class="btn">Voir le projet</a>    
+                </div>
+            </div>
+
+            <!-- Nouveau Projet : Landing Page Dashboard -->
+            <div class="project_box">
+                <img src="img/Landing Page Dashboard.png" alt="">
+                <div class="text">
+                    <h4><span>Web Design</span></h4>
+                    <h3><a href="#">Landing Page Dashboard</a></h3>
+                    <p>Création d’une page d’atterrissage type <strong>Dashboard</strong> avec un design moderne et interactif pour la présentation de données.</p>
+                    <a href="https://oussamaelbouqi.github.io/Responsive-dashboard/" target="_blank" class="btn">Voir le projet</a>    
+                </div>
+            </div>
+
+            <!-- Nouveau Projet : Landing Page avec changement de couleur -->
+            <div class="project_box">
+                <img src="img/Landing Page avec changement de couleur.png" alt="">
+                <div class="text">
+                    <h4><span>Web Design</span></h4>
+                    <h3><a href="#">Landing Page Dynamique</a></h3>
+                    <p>Page d’atterrissage où la <strong>couleur de fond change automatiquement</strong> lorsqu’on sélectionne l’un des téléphones présentés.</p>
+                    <a href="https://oussamaelbouqi.github.io/landing-page/" target="_blank" class="btn">Voir le projet</a>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <script src="js/main.js"></script>
+    <script>
+document.addEventListener('contextmenu', e => e.preventDefault());
+document.onkeydown = function(e) {
+    if(e.keyCode == 123 || (e.ctrlKey && e.shiftKey && (e.keyCode==73 || e.keyCode==J))) {
+        return false;
+    }
+}
+    </script>
+</body>
+</html>
